@@ -1,0 +1,17 @@
+Mem_100	DCD		0
+Mem_104	DCD		1
+Mem_10C	DCD		2
+Mem_110	DCD		3
+Mem_114	DCD		4
+Mem_11C	DCD		5
+Mem_120	DCD		6
+Mem_124	DCD		7
+		;--------------------------------------------
+		;Average 	of 8 unsigned numbers
+		;Result	based on constants above should be:
+		;R0 = 3	(Quotient) and
+		;R1 = 4	(Remainder)
+		;------------------------------------------
+Start	MOV		R1,#0x100		; initialize array pointer
+		;enter your code here
+		END
