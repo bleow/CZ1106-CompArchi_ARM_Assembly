@@ -2,5 +2,32 @@ Mem_100	DCD		0x3224FFFF
 Mem_104	DCD		0x22282317
 Mem_108	DCD		0x17208013
 Mem_10C	DCD		0x2D142580
-Start	;Type here
+Start	MOV		R1, #0x100
+		MOV		R4, #0x100
+		MOV		R0, #0 ;put 0 for Hotdays
+		STRB		R0, [R4] ;put 0 for Hotdays
+		ADD		R1, R1, #2 ;R1 = 0x102
+		
+		;HotDays	0x100
+		;DaySum	0x101
+		;each	data is only 1 byte
+		
+Loop		LDRB		R3, [R1] ;get first element into R3
+		CMP		R3, #0x80 ;check if it equals -128
+		BEQ		Done ;if yes, then end program
+		ADD		R0, R0, #1 ;if not increment hotdays
+		LDRB		R3, [R1] ;get first element again into R3
+		CMP		R3, #36 ;compare first element with 36
+		BHS		HotFound ;if higher than 36
+		ADD		R1, R1, #1 ;move to the next element in the array
+		B		Loop
+		
+HotFound	LDRB		R2, [R4] ;take hotdays
+		ADD		R2, R2, #1 ;add 1
+		STRB		R2, [R4] ;put it back
+		ADD		R1, R1, #1 ;move to the next element in the array
+		B		Loop
+		
+Done		ADD		R4, R4, #1 ;move to daysum
+		STRB		R0, [R4] ;add this sum to daysum
 		END
