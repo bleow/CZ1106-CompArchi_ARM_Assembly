@@ -1,0 +1,53 @@
+num0		DCD		0x02
+num1		DCD		0x01
+num2		DCD		0x00
+num3		DCD		0x00
+num4		DCD		0xBB
+num5		DCD		0xAA
+num6		DCD		0xFE
+num7		DCD		0xFF
+		
+		
+		;Part	5
+		;		MOV		R0, #0x0100
+		;		MOV		R1, #0x104
+		;		LDR		R2, [R0]
+		;		STR		R2, [R1]
+		
+		
+		;Part	6
+		;		MOV		R0, #0x11C
+		;		MOV		R2, #7
+		;loop	LDR		R1, [R0, #-4]!
+		;		STR		R1, [R0, #4]
+		;		SUBS		R2, R2, #1
+		;BNE		loop
+		
+		
+		;Part	7
+		;		MOV		R1, #0x100
+		;		MOV		R2, #0x4
+		;
+		;		LDR		R3, [R1]
+		;		LDR		R4, [R1, R2]
+		;		STR		R3, [R1, R2]
+		;		STR		R4, [R1]
+		
+		
+		;;;;;;;;;;;;;	QN 2.2
+		
+		;Part	2
+		MOV		R2, #0
+		MOV		R6, #6
+		MOV		R0, #0x0001
+loop		ORR		R2, R2, R0
+		LSL		R0, R0, #4
+		
+		SUBS		R6, R6, #1
+		BNE		loop
+		
+		
+		
+		
+		
+		
